@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: my-container
+    image: tatapong/cicd-project-repo:jk
+    ports:
+      - containerPort: 80

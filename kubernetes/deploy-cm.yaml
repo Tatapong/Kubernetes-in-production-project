@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dep-web-color
+  name: dep-web-color
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dep-web-color
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: dep-web-color
+    spec:
+      containers:
+      - image: kodekloud/webapp-color:latest
+        name: webapp-color
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: APP_COLOR
+            valueFrom:
+              configMapKeyRef:  # Correct key
+                name: webapp-color-cm
+                key: APP_COLOR_KEY  # Specify the key from the ConfigMap

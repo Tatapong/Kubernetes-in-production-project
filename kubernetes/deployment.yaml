@@ -1,45 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-app
+  name: my-app-deployment
 spec:
-  replicas: 1
+  replicas: 3  # Number of replicas
   selector:
     matchLabels:
-      app: demo-app
+      app: my-app
   template:
     metadata:
       labels:
-        app: demo-app
+        app: my-app
     spec:
       containers:
-      - name: demo-container
-        image: <your-docker-username>/flask-demo:latest  # Use the built image
+      - name: gift-deployment
+        image: tatapong/cicd-project-repo:jk  # Replace with your actual image name
         ports:
-        - containerPort: 80
-        env:
-        - name: APP_ENV
-          valueFrom:
-            configMapKeyRef:
-              name: my-config
-              key: APP_ENV
-        - name: LOG_LEVEL
-          valueFrom:
-            configMapKeyRef:
-              name: my-config
-              key: LOG_LEVEL
-        - name: FLASK_SECRET_KEY
-          valueFrom:
-            configMapKeyRef:
-              name: my-config
-              key: FLASK_SECRET_KEY
-        - name: DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: my-secret
-              key: DB_USER
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: my-secret
-              key: DB_PASSWORD
+        - containerPort: 80  # Port your application listens on
