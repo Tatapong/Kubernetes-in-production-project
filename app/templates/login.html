@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,11 +6,15 @@
 </head>
 <body>
     <h1>Login</h1>
-    <form method="POST">
-        Username: <input type="text" name="username" required>
-        Password: <input type="password" name="password" required>
-        <button type="submit">Login</button>
+    <form method="POST" action="/login">
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+        <br>
+        <input type="submit" value="Login">
     </form>
-    <a href="/">Back to Home</a>
+    <p><a href="/register">Don't have an account? Register here.</a></p>
 </body>
 </html>
